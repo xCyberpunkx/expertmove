@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion & Déconnexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .menu-container {
+            position: relative;
+        }
+
+        .menu-button {
+            width: 50px;
+            height: 50px;
+            background-color: #c50606;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-button img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: -50px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .menu img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .menu p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        .menu button {
+            width: 100%;
+            padding: 8px;
+            background: #e90606;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .menu button:hover {
+            background: #b30000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="menu-container">
+        <button class="menu-button" onclick="toggleMenu()">
+            <img id="userIcon" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User">
+        </button>
+        <div class="menu" id="menu">
+            <img id="profilePic" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile">
+            <p id="userName">Invité</p>
+            <button id="authButton" onclick="handleAuth()">Se connecter</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+
+        function handleAuth() {
+            let isLoggedIn = localStorage.getItem("isLoggedIn");
+
+            if (isLoggedIn === "true") {
+                // Déconnexion
+                localStorage.removeItem("isLoggedIn");
+                localStorage.removeItem("userName");
+                localStorage.removeItem("profilePic");
+                updateUI(false);
+                window.location.href = "connexion.html"; // Redirection vers connexion
+            } else {
+                // Connexion - Simulation (à remplacer par un vrai formulaire)
+                let userName = "John Doe";
+                let profilePic = "https://randomuser.me/api/portraits/men/45.jpg";
+
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("userName", userName);
+                localStorage.setItem("profilePic", profilePic);
+
+                updateUI(true);
+                window.location.href = "index.html"; // Redirection vers page principale
+            }
+        }
+
+        function updateUI(isLoggedIn) {
+            let userIcon = document.getElementById("userIcon");
+            let profilePic = document.getElementById("profilePic");
+            let userName = document.getElementById("userName");
+            let authButton = document.getElementById("authButton");
+
+            if (isLoggedIn) {
+                let savedName = localStorage.getItem("userName") || "Utilisateur";
+                let savedPic = localStorage.getItem("profilePic") || "https://randomuser.me/api/portraits/men/45.jpg";
+
+                userIcon.src = savedPic;
+                profilePic.src = savedPic;
+                userName.textContent = savedName;
+                authButton.textContent = "Déconnexion";
+            } else {
+                userIcon.src = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+                profilePic.src = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+                userName.textContent = "Invité";
+                authButton.textContent = "Se connecter";
+            }
+        }
+
+        // Vérification de l'état de connexion au chargement
+        window.onload = function () {
+            let isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+            updateUI(isLoggedIn);
+        };
+    </script>
+
+</body>
+
+</html>

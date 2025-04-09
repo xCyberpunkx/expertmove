@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modifier Mon Profil - Dashboard Chauffeur</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+  <div class="flex flex-col md:flex-row">
+    <aside class="w-full md:w-64 bg-white dark:bg-gray-800 h-auto md:h-screen p-5 shadow-md">
+      <h2 class="text-2xl font-bold mb-6">Chauffeur Pro</h2>
+      <nav>
+        <ul>
+          <li class="mb-4">
+            <a href="dashboard_chauffeur.php" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
+              <span class="material-icons">dashboard</span>
+              <span class="ml-2">Tableau de bord</span>
+            </a>
+          </li>
+          <li class="mb-4">
+            <a href="profil_chauffeur.php" class="flex items-center p-2 bg-gray-200 dark:bg-gray-700 rounded-md">
+              <span class="material-icons">person</span>
+              <span class="ml-2">Mon Profil</span>
+            </a>
+          </li>
+          <li class="mb-4">
+            <a href="parametres_chauffeur.php" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
+              <span class="material-icons">settings</span>
+              <span class="ml-2">Paramètres</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="flex-1 p-6">
+      <h1 class="text-3xl font-semibold mb-6">Modifier Mon Profil</h1>
+      <form class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+        <!-- Photo de profil avec modification -->
+        <div class="mb-4 flex flex-col items-center">
+          <img src="https://via.placeholder.com/150" alt="Photo de Profil" class="w-32 h-32 rounded-full object-cover mb-4">
+          <label for="profile-photo" class="cursor-pointer px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Modifier Photo</label>
+          <input type="file" id="profile-photo" class="hidden">
+        </div>
+        <!-- Données personnelles -->
+        <div class="mb-4">
+          <label for="user-name" class="block text-lg font-medium mb-2">Nom</label>
+          <input type="text" id="user-name" class="w-full p-2 border rounded-md bg-gray-50 dark:bg-gray-700" value="Jean Dupont">
+        </div>
+        <div class="mb-4">
+          <label for="user-email" class="block text-lg font-medium mb-2">Email</label>
+          <input type="email" id="user-email" class="w-full p-2 border rounded-md bg-gray-50 dark:bg-gray-700" value="jean.dupont@example.com">
+        </div>
+        <div class="mb-4">
+          <label for="user-phone" class="block text-lg font-medium mb-2">Téléphone</label>
+          <input type="text" id="user-phone" class="w-full p-2 border rounded-md bg-gray-50 dark:bg-gray-700" value="+213 123 456 789">
+        </div>
+        <div class="mb-4">
+          <label for="user-vehicle" class="block text-lg font-medium mb-2">Véhicule</label>
+          <input type="text" id="user-vehicle" class="w-full p-2 border rounded-md bg-gray-50 dark:bg-gray-700" value="Renault Kangoo">
+        </div>
+        <div class="flex space-x-2">
+          <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">Enregistrer</button>
+          <a href="profil_chauffeur.php" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Annuler</a>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
