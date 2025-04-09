@@ -7,6 +7,10 @@ try {
 } catch (PDOException $e) {
     die("Erreur lors de la récupération des réservations : " . $e->getMessage());
 }
+
+if (isset($_GET['deleted'])) {
+  echo '<div class="bg-green-500 text-white p-3 rounded mb-4">Réservation supprimée avec succès.</div>';
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +21,44 @@ try {
   <title>Commandes - Dashboard Entreprise Partenaire</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+  </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
   <div class="flex flex-col md:flex-row">
     <!-- Sidebar (same as before) -->
-    <!-- ... -->
     <aside class="w-full md:w-64 bg-white dark:bg-gray-800 h-auto md:h-screen p-5 shadow-md">
       <h2 class="text-2xl font-bold mb-6">Entreprise Partenaire</h2>
       <nav>
@@ -77,9 +114,11 @@ try {
               <td class="px-4 py-2"><?= htmlspecialchars($reservation['wilaya']) ?></td>
               <td class="px-4 py-2"><?= htmlspecialchars($reservation['status'] ?? 'Inconnu') ?></td>
               <td class="px-4 py-2 space-x-2">
-                <a href="show_reservation.php?id=<?= $reservation['id_reservation'] ?>" class="bg-blue-500 text-white px-3 py-1 rounded">Afficher</a>
+                <button onclick="openModal(<?= $reservation['id_reservation'] ?>)" class="bg-blue-500 text-white px-3 py-1 rounded">Afficher</button>
                 <a href="edit_reservation.php?id=<?= $reservation['id_reservation'] ?>" class="bg-yellow-500 text-white px-3 py-1 rounded">Modifier</a>
-                <a href="delete_reservation.php?id=<?= $reservation['id_reservation'] ?>" class="bg-red-500 text-white px-3 py-1 rounded" onclick="return confirm('Voulez-vous vraiment supprimer cette commande ?')">Supprimer</a>
+                <a href="delete_reservation.php?id=<?= $reservation['id_reservation'] ?>" 
+                   onclick="return confirm('Voulez-vous vraiment supprimer cette réservation ?');"
+                   class="bg-red-500 text-white px-3 py-1 rounded">Supprimer</a>
               </td>
             </tr>
           <?php endforeach; ?>
@@ -87,5 +126,40 @@ try {
       </table>
     </main>
   </div>
+
+  <!-- Modal for displaying reservation details -->
+  <div id="reservationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Détails de la Réservation</h2>
+      <div id="reservationDetails"></div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+        // Fetch reservation details via AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "view_reservation.php?id=" + id, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                document.getElementById("reservationDetails").innerHTML = xhr.responseText;
+                document.getElementById("reservationModal").style.display = "block";
+            }
+        };
+        xhr.send();
+    }
+
+    function closeModal() {
+        document.getElementById("reservationModal").style.display = "none";
+    }
+
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("reservationModal")) {
+            closeModal();
+        }
+    };
+  </script>
 </body>
 </html>
