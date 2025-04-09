@@ -15,7 +15,7 @@
       <nav>
         <ul>
           <li class="mb-4">
-            <a href="dashboard_entreprise.html" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
+            <a href="dashboard_entreprise.php" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
               <span class="material-icons">dashboard</span>
               <span class="ml-2">Tableau de bord</span>
             </a>
@@ -27,7 +27,7 @@
             </a>
           </li>
           <li class="mb-4">
-            <a href="parametres_entreprise.html" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
+            <a href="parametres_entreprise.php" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
               <span class="material-icons">settings</span>
               <span class="ml-2">Paramètre</span>
             </a>

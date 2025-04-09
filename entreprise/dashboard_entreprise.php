@@ -19,13 +19,13 @@
       <nav>
         <ul>
           <li class="mb-4">
-            <a href="dashboard_entreprise.html" class="flex items-center p-2 bg-gray-200 dark:bg-gray-700 rounded-md">
+            <a href="dashboard_entreprise.php" class="flex items-center p-2 bg-gray-200 dark:bg-gray-700 rounded-md">
               <span class="material-icons">dashboard</span>
               <span class="ml-2">Tableau de bord</span>
             </a>
           </li>
           <li class="mb-4">
-            <a href="commandes_entreprise.html" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
+            <a href="commandes_entreprise.php" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
               <span class="material-icons">assignment</span>
               <span class="ml-2">Commande</span>
             </a>
@@ -37,7 +37,7 @@
             </a>
           </li>
           <li class="mb-4">
-            <a href="parametres_entreprise.html" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
+            <a href="parametres_entreprise.php" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md">
               <span class="material-icons">settings</span>
               <span class="ml-2">Paramètre</span>
             </a>
@@ -66,7 +66,7 @@
       
       <!-- Statistiques cliquables -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-        <a href="commandes_entreprise.html?filter=new" class="block">
+        <a href="commandes_entreprise.php?filter=new" class="block">
           <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:bg-gray-100 dark:hover:bg-gray-700">
             <h3 class="text-xl font-semibold">Nouvelles Commandes</h3>
             <p class="text-2xl">12</p>

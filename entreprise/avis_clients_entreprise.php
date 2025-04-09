@@ -14,10 +14,10 @@
             <h2 class="text-2xl font-bold mb-6">Entreprise Partenaire</h2>
             <nav>
                 <ul>
-                    <li class="mb-4"><a href="dashboard_entreprise.html" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"><span class="material-icons">dashboard</span><span class="ml-2">Tableau de bord</span></a></li>
-                    <li class="mb-4"><a href="commandes_entreprise.html" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"><span class="material-icons">assignment</span><span class="ml-2">Commande</span></a></li>
+                    <li class="mb-4"><a href="dashboard_entreprise.php" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"><span class="material-icons">dashboard</span><span class="ml-2">Tableau de bord</span></a></li>
+                    <li class="mb-4"><a href="commandes_entreprise.php" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"><span class="material-icons">assignment</span><span class="ml-2">Commande</span></a></li>
                     <li class="mb-4"><a href="profil_entreprise.html" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"><span class="material-icons">person</span><span class="ml-2">Mon Profil</span></a></li>
-                    <li class="mb-4"><a href="parametres_entreprise.html" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"><span class="material-icons">settings</span><span class="ml-2">Paramètre</span></a></li>
+                    <li class="mb-4"><a href="parametres_entreprise.php" class="flex items-center p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"><span class="material-icons">settings</span><span class="ml-2">Paramètre</span></a></li>
                 </ul>
             </nav>
         </aside>
